@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+*.pyc
+data/
+out/
+work/
+.pytest_cache/
+.DS_Store
+smoke/snapshots/
+smoke/state/
+smoke/envelopes.jsonl
+smoke-100.jsonl.bak
