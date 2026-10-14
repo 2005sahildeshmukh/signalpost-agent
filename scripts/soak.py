@@ -73,11 +73,15 @@ def main() -> None:
     parser.add_argument("--out", default="work/soak")
     parser.add_argument("--seeds", default="101,202,303")
     parser.add_argument("--count", type=int, default=1000)
+    parser.add_argument("--resume", action="store_true", help="keep finished steps from soak-results.json and run only the rest")
     args = parser.parse_args()
     out = ROOT / args.out
     out.mkdir(parents=True, exist_ok=True)
     py = [sys.executable]
     steps: list[dict] = []
+    if args.resume and (out / "soak-results.json").exists():
+        steps = json.loads((out / "soak-results.json").read_text(encoding="utf-8"))
+    done = {s["step"] for s in steps}
     plan: list[tuple[str, str, list[str], float]] = []
     seeds = [s.strip() for s in args.seeds.split(",") if s.strip()]
     for index, seed in enumerate(seeds):
@@ -93,6 +97,8 @@ def main() -> None:
     plan.append(("smoke-refresh", "work/soak/smoke", ["--input", "smoke-100.jsonl", "--output-dir", str(out / "smoke"), "--run-id", "soak-smoke-a", "--expected-count", "100"], 1500))
     plan.append(("smoke-refresh-2", "work/soak/smoke", ["--input", "smoke-100.jsonl", "--output-dir", str(out / "smoke"), "--run-id", "soak-smoke-b", "--expected-count", "100"], 1500))
     for name, run_dir, run_args, timeout in plan:
+        if name in done:
+            continue
         log = out / f"{name}.log"
         started = datetime.now(timezone.utc).isoformat(timespec="seconds")
         code, seconds = sh(["uv", "run", "signalpost", "run", *run_args], log, timeout)
