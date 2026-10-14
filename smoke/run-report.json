@@ -1,0 +1,190 @@
+{
+  "run_id": "smoke-100",
+  "agent": "signalpost-evidence-agent",
+  "agent_version": "1.0.0",
+  "schema_version": "signalpost.envelope.v1",
+  "started_at": "2026-10-14T13:49:05Z",
+  "completed_at": "2026-10-14T13:52:40Z",
+  "wall_clock_seconds": 215.5,
+  "inputs": 100,
+  "invalid_inputs": [],
+  "emitted_envelopes": 100,
+  "terminal_status_counts": {
+    "completed": 100
+  },
+  "validation": {
+    "passed": true,
+    "checks": {
+      "one_envelope_per_input": true,
+      "expected_count_matches": true,
+      "unique_organisation_numbers": true,
+      "terminal_status_valid": true,
+      "module_states_valid": true,
+      "section_states_valid": true,
+      "every_available_claim_has_evidence": true,
+      "every_evidence_has_retrieval_time": true
+    }
+  },
+  "coverage": {
+    "legal_identity": {
+      "companies_available": 100,
+      "facts": 100,
+      "states": {
+        "available": 100
+      }
+    },
+    "public_brand": {
+      "companies_available": 11,
+      "facts": 11,
+      "states": {
+        "available": 11,
+        "not_available": 88,
+        "ambiguous": 1
+      }
+    },
+    "annual_accounts": {
+      "companies_available": 100,
+      "facts": 277,
+      "states": {
+        "available": 100
+      }
+    },
+    "account_history": {
+      "companies_available": 100,
+      "facts": 100,
+      "states": {
+        "available": 100
+      }
+    },
+    "leadership": {
+      "companies_available": 100,
+      "facts": 386,
+      "states": {
+        "available": 100
+      }
+    },
+    "registered_workplaces": {
+      "companies_available": 73,
+      "facts": 76,
+      "states": {
+        "available": 73,
+        "not_available": 27
+      }
+    },
+    "official_website": {
+      "companies_available": 12,
+      "facts": 12,
+      "states": {
+        "available": 12,
+        "ambiguous": 27,
+        "not_available": 59,
+        "blocked": 2
+      }
+    },
+    "social_profiles": {
+      "companies_available": 3,
+      "facts": 8,
+      "states": {
+        "not_available": 67,
+        "ambiguous": 28,
+        "available": 3,
+        "blocked": 2
+      }
+    },
+    "contact_details": {
+      "companies_available": 7,
+      "facts": 12,
+      "states": {
+        "available": 7,
+        "not_available": 92,
+        "ambiguous": 1
+      }
+    },
+    "job_postings": {
+      "companies_available": 0,
+      "facts": 0,
+      "states": {
+        "not_available": 100
+      }
+    },
+    "careers_channel": {
+      "companies_available": 0,
+      "facts": 0,
+      "states": {
+        "not_available": 99,
+        "ambiguous": 1
+      }
+    },
+    "company_news": {
+      "companies_available": 3,
+      "facts": 28,
+      "states": {
+        "not_available": 8,
+        "ambiguous": 28,
+        "not_applicable": 59,
+        "available": 3,
+        "blocked": 2
+      }
+    },
+    "registry_activity": {
+      "companies_available": 100,
+      "facts": 644,
+      "states": {
+        "available": 100
+      }
+    }
+  },
+  "website_identity_status": {
+    "exact": 11,
+    "declared_only": 1
+  },
+  "website_discovery_origin": {
+    "registry_email_domain": 2,
+    "registry_declared": 4,
+    "name_derived_domain": 6
+  },
+  "claims_published": 8436,
+  "changes_detected": 0,
+  "material_changes": 0,
+  "operations": {
+    "requests": 1393,
+    "bytes": 101956022,
+    "p50_company_ms": 6584,
+    "p95_company_ms": 62076,
+    "requests_by_host_top": {
+      "data.brreg.no": 700,
+      "pam-stilling-feed.nav.no": 141,
+      "brandmaker.no": 16,
+      "www.rbproffpartner.no": 15,
+      "www.gobb.no": 12,
+      "7-eleven.no": 10,
+      "sago.com": 10,
+      "styrerommet.no": 10,
+      "www.studiox.no": 9,
+      "www.rbcbluebay.com": 9,
+      "atg.no": 9,
+      "pdi.no": 9
+    },
+    "third_party_cost_usd": 0.0,
+    "search_api_calls": 0,
+    "llm_calls": 0
+  },
+  "config": {
+    "search_api_enabled": false,
+    "concurrency": 24,
+    "per_company_timeout": 150.0,
+    "time_budget": 1500.0,
+    "guess_domains": true,
+    "filing_years": true,
+    "jobs": true,
+    "website": true,
+    "wikidata": true,
+    "registry_snapshot": null
+  },
+  "outputs": {
+    "envelopes": "smoke/envelopes.jsonl",
+    "site": "smoke/site/index.html",
+    "snapshots": "smoke/snapshots",
+    "state": "smoke/state"
+  }
+}
